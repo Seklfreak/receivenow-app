@@ -4,6 +4,7 @@ import 'firebase/firestore';
 import {auth, store} from "../firebase";
 import TouchableOpacity from "react-native-web/dist/exports/TouchableOpacity";
 import firebase from 'firebase/app';
+import moment from "moment";
 
 export default class DeliveryItem extends Component {
     constructor(props) {
@@ -56,9 +57,15 @@ export default class DeliveryItem extends Component {
             detailsHTML = (<Text>Last update: <b>{lastHistory.message}</b> at <b>{lastHistory.location}</b></Text>)
         }
 
+        let updatedAt;
+        if (data.updatedAt) {
+            updatedAt = moment(data.updatedAt.toDate());
+        }
+
         return (
             <View>
-                <Text style={deliveryItemStyles.idText}>{data.id}</Text>
+                <Text style={deliveryItemStyles.idText}>{data.id} {updatedAt &&
+                <small>refreshed {updatedAt.fromNow()}</small>}</Text>
                 {detailsHTML}
                 <TouchableOpacity style={deliveryItemStyles.button}
                                   onPress={e => this.handleRemove(e)}
