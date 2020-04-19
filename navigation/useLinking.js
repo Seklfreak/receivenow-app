@@ -8,6 +8,7 @@ export default function(containerRef) {
       Root: {
         path: 'root',
         screens: {
+          Deliveries: 'deliveries',
           Home: 'home',
           Links: 'links',
           Settings: 'settings',
