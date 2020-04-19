@@ -15,6 +15,6 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
       - run: npm install
-      - run: npm install firebase-tools && npm run deploy-hosting
+      - run: npm install expo-cli firebase-tools && npm run deploy-hosting
         env:
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
