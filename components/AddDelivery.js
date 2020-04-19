@@ -2,7 +2,8 @@ import React, {Component} from 'react';
 import {StyleSheet, Text, TextInput, View} from 'react-native';
 import TouchableOpacity from "react-native-web/dist/exports/TouchableOpacity";
 import {auth, store} from "../firebase";
-import {firestore} from "firebase";
+import firebase from 'firebase/app';
+import 'firebase/firestore';
 
 export default class AddDelivery extends Component {
     constructor(props) {
@@ -35,7 +36,7 @@ export default class AddDelivery extends Component {
             .then(_ => {
                 store.collection('users').doc(auth.currentUser.uid).set(
                     {
-                        deliveries: firestore.FieldValue.arrayUnion(id),
+                        deliveries: firebase.firestore.FieldValue.arrayUnion(id),
                     },
                     {merge: true}
                 )

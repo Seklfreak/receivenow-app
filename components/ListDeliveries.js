@@ -12,6 +12,10 @@ export default class ListDeliveries extends Component {
     };
 
     store.collection('users').doc(auth.currentUser.uid).onSnapshot(snapshot => {
+      if (!snapshot.data()) {
+        return;
+      }
+
       this.setState({deliveries: snapshot.data().deliveries});
     });
   }
