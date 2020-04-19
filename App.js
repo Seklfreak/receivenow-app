@@ -8,6 +8,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 
 import BottomTabNavigator from './navigation/BottomTabNavigator';
 import useLinking from './navigation/useLinking';
+import {auth} from "./firebase";
 
 const Stack = createStackNavigator();
 
@@ -31,6 +32,9 @@ export default function App(props) {
           ...Ionicons.font,
           'space-mono': require('./assets/fonts/SpaceMono-Regular.ttf'),
         });
+
+        // Sign in with firebase
+        await auth.signInAnonymously();
       } catch (e) {
         // We might want to provide this error information to an error reporting service
         console.warn(e);
