@@ -2,7 +2,7 @@ import firebase from 'firebase/app';
 import 'firebase/firestore';
 import 'firebase/auth';
 
-var firebaseConfig = {
+const firebaseConfig = {
     apiKey: "AIzaSyCN624O6AIsqSsL0MfIhQq8FGSo4nxCgbU",
     authDomain: "receivenow.firebaseapp.com",
     databaseURL: "https://receivenow.firebaseio.com",
