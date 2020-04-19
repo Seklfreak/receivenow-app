@@ -48,9 +48,18 @@ export default class DeliveryItem extends Component {
             return (<Text>Loading…</Text>);
         }
 
+        let detailsHTML;
+        if (data.message !== '') {
+            detailsHTML = (<Text>Status: {data.message}</Text>)
+        } else if (data.history.length > 0) {
+            let lastHistory = data.history[data.history.length - 1]
+            detailsHTML = (<Text>Last update: <b>{lastHistory.message}</b> at <b>{lastHistory.location}</b></Text>)
+        }
+
         return (
             <View>
                 <Text style={deliveryItemStyles.idText}>{data.id}</Text>
+                {detailsHTML}
                 <TouchableOpacity style={deliveryItemStyles.button}
                                   onPress={e => this.handleRemove(e)}
                                   disabled={this.state.removeBlocked}>
